@@ -1,6 +1,6 @@
-#include "../mp2-lab3-stack/Stack.h"
 
 #include "gtest.h"
+#include "../mp2-lab3-stack/Stack.h"
 
 TEST(TStack, can_create_stack_with_positive_length)
 {
