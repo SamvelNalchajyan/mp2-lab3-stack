@@ -1,3 +1,4 @@
+#include <cmath>
 #include "TCalculator.h"
 
 void TCalculator::SetExpr(std::string s)
@@ -98,6 +99,54 @@ std::string TCalculator::ToPostfix()
 
 double TCalculator::Calc()
 {
-	double res = 0;
+	double res;
+	st_double.Clear();
+	std::string postfix = ToPostfix();
+	char *tmp;
+	for (int i = 0; i < postfix.size(); i++)
+	{
+		if (postfix[i] >= '0' && postfix[i] <= '9')
+		{
+			double d = strtod(&postfix[i], &tmp);
+			int j = tmp - &postfix[i];
+			i += j - 1;
+			st_double.Push(d);
+		}
+		if (postfix[i] == '+' || postfix[i] == '-' || postfix[i] == '*' || postfix[i] == '/' || postfix[i] == '^')
+		{
+			double op1, op2;
+			op2 = st_double.Pop();
+			op1 = st_double.Pop();
+			if (postfix[i] == '+')
+			{
+				res = op1 + op2;
+			}
+			if (postfix[i] == '-')
+			{
+				res = op1 - op2;
+			}
+			if (postfix[i] == '*')
+			{
+				res = op1 * op2;
+			}
+			if (postfix[i] == '/')
+			{
+				if (op2 != 0)
+				{
+					res = op1 / op2;
+				}
+				else
+				{
+					throw -1;
+				}
+			}
+			if (postfix[i] == '^')
+			{
+				res = pow(op1, op2);
+			}
+			st_double.Push(res);
+		}
+	}
+	res = st_double.Pop();
 	return res;
 }

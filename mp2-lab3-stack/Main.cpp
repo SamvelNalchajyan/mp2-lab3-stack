@@ -11,10 +11,12 @@ int main()
 	//.......................................................//
 	TStack<int> a;
 	TCalculator c;
-	string str = "5+(5-4)/2";
+	string str = "5+(5-4)^2.5/(2.5-8)";
 	c.SetExpr(str);
 	string test = c.ToPostfix();
-	cout << test << endl;
+	cout << str << " = " << test << endl;
+	double res = c.Calc();
+	cout << endl << str << " = " << res << endl;
 	//.......................................................//
 	system("pause");
 	return 0;
