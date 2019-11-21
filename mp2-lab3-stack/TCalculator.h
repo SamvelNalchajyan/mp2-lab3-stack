@@ -16,5 +16,5 @@ public:
 	bool Check();
 	std::string ToPostfix();
 	double Calc();
-	//double OpCalc();
+	double OpCalc();
 };

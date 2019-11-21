@@ -162,9 +162,9 @@ double TCalculator::Calc()
 	return res;
 }
 
-/*double TCalculator::OpCalc()
+double TCalculator::OpCalc()
 {
-	double res;
+	double res = 0;
 	std::string str = "(";
 	str += expr;
 	str += ")";
@@ -190,11 +190,139 @@ double TCalculator::Calc()
 		}
 		if (str[i] == '+' || str[i] == '-' || str[i] == '*' || str[i] == '/' || str[i] == '^')
 		{
-
+			char tmp = st_char.Pop();
+			while (Prior(str[i]) <= Prior(tmp))
+			{
+				double op1, op2;
+				op2 = st_double.Pop();
+				op1 = st_double.Pop();
+				if (tmp == '+')
+				{
+					res = op1 + op2;
+					st_double.Push(res);
+				}
+				if (tmp == '-')
+				{
+					res = op1 - op2;
+					st_double.Push(res);
+				}
+				if (tmp == '*')
+				{
+					res = op1 * op2;
+					st_double.Push(res);
+				}
+				if (tmp == '/')
+				{
+					if (op2 != 0)
+					{
+						res = op1 / op2;
+						st_double.Push(res);
+					}
+					else
+					{
+						throw - 1;
+					}
+				}
+				if (tmp == '^')
+				{
+					res = pow(op1, op2);
+					st_double.Push(res);
+				}
+				tmp = st_char.Pop();
+			}
+			st_char.Push(tmp);
+			st_char.Push(str[i]);
 		}
 		if (str[i] == ')')
 		{
-
+			char tmp = st_char.Pop();
+			while (tmp != '(')
+			{
+				if (tmp == '+' || tmp == '-' || tmp == '*' || tmp == '/' || tmp == '^')
+				{
+					double op1, op2;
+					op2 = st_double.Pop();
+					op1 = st_double.Pop();
+					if (tmp == '+')
+					{
+						res = op1 + op2;
+						st_double.Push(res);
+					}
+					if (tmp == '-')
+					{
+						res = op1 - op2;
+						st_double.Push(res);
+					}
+					if (tmp == '*')
+					{
+						res = op1 * op2;
+						st_double.Push(res);
+					}
+					if (tmp == '/')
+					{
+						if (op2 != 0)
+						{
+							res = op1 / op2;
+							st_double.Push(res);
+						}
+						else
+						{
+							throw - 1;
+						}
+					}
+					if (tmp == '^')
+					{
+						res = pow(op1, op2);
+						st_double.Push(res);
+					}
+				}
+				tmp = st_char.Pop();
+			}
 		}
 	}
-}*/
+	char tmp = st_char.Pop();
+	while (tmp != '(')
+	{
+		if (tmp == '+' || tmp == '-' || tmp == '*' || tmp == '/' || tmp == '^')
+		{
+			double op1, op2;
+			op2 = st_double.Pop();
+			op1 = st_double.Pop();
+			if (tmp == '+')
+			{
+				res = op1 + op2;
+				st_double.Push(res);
+			}
+			if (tmp == '-')
+			{
+				res = op1 - op2;
+				st_double.Push(res);
+			}
+			if (tmp == '*')
+			{
+				res = op1 * op2;
+				st_double.Push(res);
+			}
+			if (tmp == '/')
+			{
+				if (op2 != 0)
+				{
+					res = op1 / op2;
+					st_double.Push(res);
+				}
+				else
+				{
+					throw - 1;
+				}
+			}
+			if (tmp == '^')
+			{
+				res = pow(op1, op2);
+				st_double.Push(res);
+			}
+		}
+		tmp = st_char.Pop();
+	}
+	res = st_double.Pop();
+	return res;
+}
