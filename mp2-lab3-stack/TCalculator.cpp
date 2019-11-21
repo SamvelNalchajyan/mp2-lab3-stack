@@ -62,10 +62,14 @@ std::string TCalculator::ToPostfix()
 	str += expr;
 	str += ")";
 	st_char.Clear();
-	for (int i = 0; i < str.size(); i++)
+	for (int i = 0; i < str.size() - 1; i++)
 	{
 		if (str[i] == '(')
 		{
+			if (str[i + 1] == '-' || str[i + 1] == '+')
+			{
+				postfix += '0';
+			}
 			st_char.Push(str[i]);
 		}
 		if (str[i] >= '0' && str[i] <= '9' || str[i] == '.')
@@ -93,6 +97,12 @@ std::string TCalculator::ToPostfix()
 			st_char.Push(tmp);
 			st_char.Push(str[i]);
 		}
+	}
+	char tmp = st_char.Pop();
+	while (tmp != '(')
+	{
+		postfix += tmp;
+		tmp = st_char.Pop();
 	}
 	return postfix;
 }
