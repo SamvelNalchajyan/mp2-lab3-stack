@@ -1,3 +1,4 @@
+#define _USE_MATH_DEFINES
 #include <cmath>
 #include "TCalculator.h"
 
@@ -160,3 +161,40 @@ double TCalculator::Calc()
 	res = st_double.Pop();
 	return res;
 }
+
+/*double TCalculator::OpCalc()
+{
+	double res;
+	std::string str = "(";
+	str += expr;
+	str += ")";
+	st_char.Clear();
+	st_double.Clear();
+	for (int i = 0; i < str.size() - 1; i++)
+	{
+		if (str[i] == '(')
+		{
+			if (str[i + 1] == '-' || str[i + 1] == '+')
+			{
+				st_double.Push(0);
+			}
+			st_char.Push(str[i]);
+		}
+		if (str[i] >= '0' && str[i] <= '9')
+		{
+			char *tmp;
+			double d = strtod(&str[i], &tmp);
+			int j = tmp - &str[i];
+			i += j - 1;
+			st_double.Push(d);
+		}
+		if (str[i] == '+' || str[i] == '-' || str[i] == '*' || str[i] == '/' || str[i] == '^')
+		{
+
+		}
+		if (str[i] == ')')
+		{
+
+		}
+	}
+}*/
