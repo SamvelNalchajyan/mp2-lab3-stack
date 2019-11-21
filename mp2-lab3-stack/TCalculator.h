@@ -15,6 +15,6 @@ public:
 	std::string GetExpr();
 	bool Check();
 	std::string ToPostfix();
+	double OldCalc();
 	double Calc();
-	double OpCalc();
 };

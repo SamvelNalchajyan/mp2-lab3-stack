@@ -11,15 +11,15 @@ int main()
 	//.......................................................//
 	TStack<int> a;
 	TCalculator c;
-	string str1 = "5+(5-4)^2.5/(2.5-8*2)";
+	string str1 = "5+(5-4)^2.5/(2.5-8*2)-Pi";
 	string str2 = "-5+6";
 	c.SetExpr(str1);
 	string test = c.ToPostfix();
 	cout << str1 << " = " << test << endl;
-	double res = c.OpCalc();
+	double res = c.Calc();
 	cout << endl << str1 << " = " << res << endl;
 	c.SetExpr(str2);
-	res = c.Calc();
+	res = c.OldCalc();
 	cout << endl << str2 << " = " << res << endl;
 	//.......................................................//
 	system("pause");

@@ -77,6 +77,14 @@ std::string TCalculator::ToPostfix()
 		{
 			postfix += str[i];
 		}
+		if (str[i] >= 'A' && str[i] <= 'Z')
+		{
+			postfix += str[i];
+		}
+		if (str[i] >= 'a' && str[i] <= 'z')
+		{
+			postfix += str[i];
+		}
 		if (str[i] == ')')
 		{
 			char tmp = st_char.Pop();
@@ -108,7 +116,7 @@ std::string TCalculator::ToPostfix()
 	return postfix;
 }
 
-double TCalculator::Calc()
+double TCalculator::OldCalc()
 {
 	double res;
 	st_double.Clear();
@@ -162,7 +170,7 @@ double TCalculator::Calc()
 	return res;
 }
 
-double TCalculator::OpCalc()
+double TCalculator::Calc()
 {
 	double res = 0;
 	std::string str = "(";
@@ -277,6 +285,18 @@ double TCalculator::OpCalc()
 					}
 				}
 				tmp = st_char.Pop();
+			}
+		}
+		if (str[i] >= 'A' && str[i] <= 'Z')
+		{
+			if (str[i] == 'P' && str[i + 1] == 'i')
+			{
+				st_double.Push(M_PI);
+				i++;
+			}
+			if (str[i] == 'E')
+			{
+				st_double.Push(M_E);
 			}
 		}
 	}
