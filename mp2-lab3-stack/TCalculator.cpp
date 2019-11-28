@@ -244,7 +244,7 @@ double TCalculator::Calc()
 		if (str[i] == ')')
 		{
 			char tmp = st_char.Pop();
-			while (tmp != '(')
+			while (tmp != '(' || tmp != 's' || tmp != 'c' || tmp != 't' || tmp != 'v' || tmp != 'g' || tmp != 'h' || tmp != 'j' || tmp != 'k')
 			{
 				if (tmp == '+' || tmp == '-' || tmp == '*' || tmp == '/' || tmp == '^')
 				{
@@ -286,6 +286,12 @@ double TCalculator::Calc()
 				}
 				tmp = st_char.Pop();
 			}
+			if (tmp == 's')
+			{
+				res = st_double.Pop();
+				res = sin(res);
+				st_double.Push(res);
+			}
 		}
 		if (str[i] >= 'A' && str[i] <= 'Z')
 		{
@@ -297,6 +303,89 @@ double TCalculator::Calc()
 			if (str[i] == 'E')
 			{
 				st_double.Push(M_E);
+			}
+		}
+		if (str[i] >= 'a' && str[i] <= 'z' && i <= str.size() - 5)
+		{
+			// sin
+			if (str[i] == 's' && str[i + 1] == 'i' && str[i + 2] == 'n')
+			{
+				i += 3;
+				if (str[i + 1] == '-' || str[i + 1] == '+')
+				{
+					st_double.Push(0);
+				}
+				st_char.Push('s');
+			}
+			// cos
+			if (str[i] == 'c' && str[i + 1] == 'o' && str[i + 2] == 's')
+			{
+				i += 3;
+				if (str[i + 1] == '-' || str[i + 1] == '+')
+				{
+					st_double.Push(0);
+				}
+				st_char.Push('c');
+			}
+			// tg
+			if (str[i] == 't' && str[i + 1] == 'g')
+			{
+				i += 2;
+				if (str[i + 1] == '-' || str[i + 1] == '+')
+				{
+					st_double.Push(0);
+				}
+				st_char.Push('t');
+			}
+			// ctg
+			if (str[i] == 'c' && str[i + 1] == 't' && str[i + 2] == 'g')
+			{
+				i += 3;
+				if (str[i + 1] == '-' || str[i + 1] == '+')
+				{
+					st_double.Push(0);
+				}
+				st_char.Push('v');
+			}
+			// sh
+			if (str[i] == 's' && str[i + 1] == 'h')
+			{
+				i += 2;
+				if (str[i + 1] == '-' || str[i + 1] == '+')
+				{
+					st_double.Push(0);
+				}
+				st_char.Push('h');
+			}
+			// ch
+			if (str[i] == 'c' && str[i + 1] == 'h')
+			{
+				i += 2;
+				if (str[i + 1] == '-' || str[i + 1] == '+')
+				{
+					st_double.Push(0);
+				}
+				st_char.Push('g');
+			}
+			// th
+			if (str[i] == 't' && str[i + 1] == 'h')
+			{
+				i += 2;
+				if (str[i + 1] == '-' || str[i + 1] == '+')
+				{
+					st_double.Push(0);
+				}
+				st_char.Push('j');
+			}
+			// cth
+			if (str[i] == 'c' && str[i + 1] == 't' && str[i + 2] == 'h')
+			{
+				i += 3;
+				if (str[i + 1] == '-' || str[i + 1] == '+')
+				{
+					st_double.Push(0);
+				}
+				st_char.Push('k');
 			}
 		}
 	}
