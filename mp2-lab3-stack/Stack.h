@@ -123,4 +123,5 @@ TStack<T>& TStack<T>::operator=(const TStack<T>& st)
 	{
 		arr[i] = st.arr[i];
 	}
+	return *this;
 }

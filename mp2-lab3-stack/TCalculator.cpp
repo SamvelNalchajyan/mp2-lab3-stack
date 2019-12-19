@@ -244,7 +244,7 @@ double TCalculator::Calc()
 		if (str[i] == ')')
 		{
 			char tmp = st_char.Pop();
-			while (tmp != '(' || tmp != 's' || tmp != 'c' || tmp != 't' || tmp != 'v' || tmp != 'g' || tmp != 'h' || tmp != 'j' || tmp != 'k')
+			while (tmp != '(')
 			{
 				if (tmp == '+' || tmp == '-' || tmp == '*' || tmp == '/' || tmp == '^')
 				{
@@ -286,12 +286,14 @@ double TCalculator::Calc()
 				}
 				tmp = st_char.Pop();
 			}
+			/*
 			if (tmp == 's')
 			{
 				res = st_double.Pop();
 				res = sin(res);
 				st_double.Push(res);
 			}
+			*/
 		}
 		if (str[i] >= 'A' && str[i] <= 'Z')
 		{
@@ -305,6 +307,7 @@ double TCalculator::Calc()
 				st_double.Push(M_E);
 			}
 		}
+		/*
 		if (str[i] >= 'a' && str[i] <= 'z' && i <= str.size() - 5)
 		{
 			// sin
@@ -388,6 +391,7 @@ double TCalculator::Calc()
 				st_char.Push('k');
 			}
 		}
+		*/
 	}
 	char tmp = st_char.Pop();
 	while (tmp != '(')
