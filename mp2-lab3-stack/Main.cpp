@@ -13,9 +13,6 @@ int main()
 		double a = c.Calc();
 		cout << a << endl;
 
-	/*
-		TStack<int> a;
-		TCalculator c;
 		string str1 = "(10/(-0.1)+1+10^2*3)/5.55";
 		string str2 = "-5+6";
 		c.SetExpr(str1);
@@ -26,7 +23,7 @@ int main()
 		c.SetExpr(str2);
 		res = c.OldCalc();
 		//cout << endl << str2 << " = " << res << endl;
-	//.......................................................//*/
+	//.......................................................//
 	system("pause");
 	return 0;
 }
