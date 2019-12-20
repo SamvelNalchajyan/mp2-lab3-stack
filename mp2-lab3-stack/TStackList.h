@@ -108,11 +108,11 @@ bool TStack<T>::IsFull()
 	if (p)
 	{
 		delete p;
-		return true;
+		return false;
 	}
 	else
 	{
-		return false;
+		return true;
 	}
 }
 

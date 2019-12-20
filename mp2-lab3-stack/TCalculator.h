@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-#include "Stack.h"
-//#include "TStackList.h"
+//#include "Stack.h"
+#include "TStackList.h"
 
 class TCalculator
 {

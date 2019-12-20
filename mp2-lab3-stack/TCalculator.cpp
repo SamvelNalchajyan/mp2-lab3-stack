@@ -150,6 +150,7 @@ double TCalculator::OldCalc()
 			}
 			if (postfix[i] == '/')
 			{
+				/*
 				if (op2 != 0)
 				{
 					res = op1 / op2;
@@ -158,6 +159,9 @@ double TCalculator::OldCalc()
 				{
 					throw -1;
 				}
+				*/
+				res = op1 / op2;
+				st_double.Push(res);
 			}
 			if (postfix[i] == '^')
 			{
@@ -221,6 +225,7 @@ double TCalculator::Calc()
 				}
 				if (tmp == '/')
 				{
+					/*
 					if (op2 != 0)
 					{
 						res = op1 / op2;
@@ -230,6 +235,9 @@ double TCalculator::Calc()
 					{
 						throw - 1;
 					}
+					*/
+					res = op1 / op2;
+					st_double.Push(res);
 				}
 				if (tmp == '^')
 				{
@@ -268,6 +276,7 @@ double TCalculator::Calc()
 					}
 					if (tmp == '/')
 					{
+						/*
 						if (op2 != 0)
 						{
 							res = op1 / op2;
@@ -275,8 +284,11 @@ double TCalculator::Calc()
 						}
 						else
 						{
-							throw - 1;
+							throw 1;
 						}
+						*/
+						res = op1 / op2;
+						st_double.Push(res);
 					}
 					if (tmp == '^')
 					{
@@ -418,6 +430,7 @@ double TCalculator::Calc()
 			}
 			if (tmp == '/')
 			{
+				/*
 				if (op2 != 0)
 				{
 					res = op1 / op2;
@@ -427,6 +440,9 @@ double TCalculator::Calc()
 				{
 					throw - 1;
 				}
+				*/
+				res = op1 / op2;
+				st_double.Push(res);
 			}
 			if (tmp == '^')
 			{
